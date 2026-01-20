@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z A M O S H I</title>
+    <style>
+        /* MYSTERIOUS MINIMALIST STYLING */
+        body {
+            background-color: #050505; /* Deepest Black */
+            color: #dcdcdc;
+            font-family: 'Courier New', Courier, monospace; /* Typewriter feel */
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* FADE IN ANIMATION */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* SECTIONS */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            box-sizing: border-box;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        h1 { font-size: 3rem; letter-spacing: 0.5rem; text-transform: uppercase; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; letter-spacing: 0.2rem; color: #888; margin-bottom: 1rem; }
+        p { max-width: 600px; text-align: center; color: #666; margin-bottom: 2rem; }
+        
+        a { color: #fff; text-decoration: none; border-bottom: 1px dotted #fff; transition: 0.3s; }
+        a:hover { color: #aaa; border-bottom: 1px solid #aaa; }
+
+        /* PROJECT SPECIFIC STYLES */
+        .project-link {
+            border: 1px solid #333;
+            padding: 15px 30px;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+        }
+        .project-link:hover { background: #111; border-color: #666; }
+
+        /* SCROLL INDICATOR */
+        .scroll-down { position: absolute; bottom: 30px; animation: bounce 2s infinite; opacity: 0.5; }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+    </style>
+</head>
+<body>
+
+    <section class="fade-in">
+        <h1>ZAMOSHI</h1>
+        <p>Artist. Architect. Observer.</p>
+        <div class="scroll-down">↓</div>
+    </section>
+
+    <section>
+        <h2>I. THE SANCTUARY</h2>
+        <p>
+            <strong>Sanctuary of the Silent Star</strong><br><br>
+            An architectural exploration for 2026. 
+            Detailed schematics and 3D modeling aimed at constructing a space of silence.
+        </p>
+        <a href="#" class="project-link">View Schematics</a>
+    </section>
+
+    <section>
+        <h2>II. THE MIND</h2>
+        <p>
+            A collection of narratives on the fringe.<br>
+            Psychosis. Homelessness. Mental Health. Adventure.<br><br>
+            "It is in the unknown that we find the story."
+        </p>
+        <a href="#" class="project-link">Read the Stories</a>
+    </section>
+
+    <section style="border-bottom: none;">
+        <h2>III. THE ENGINE</h2>
+        <p>
+            <strong>Cypher Energy Solutions</strong><br>
+            Enabling fleet electrification for a sustainable future.
+        </p>
+        <a href="https://cypheres.com" target="_blank" class="project-link">Visit CypherES.com</a>
+    </section>
+
+</body>
+</html>
