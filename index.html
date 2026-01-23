@@ -8,24 +8,66 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&family=Montserrat:wght@200;300&display=swap" rel="stylesheet">
 
     <style>
-        /* BASE STYLES */
+        /* --- THE VOID (BASE) --- */
         body {
-            background-color: #050505;
-            color: #dcdcdc;
+            background-color: #030303; /* Darker than before */
+            color: #888;
             font-family: 'Montserrat', sans-serif;
             margin: 0; padding: 0;
-            line-height: 1.6;
             overflow-x: hidden;
+            height: 100vh;
         }
 
-        /* ANIMATIONS */
-        .fade-in { opacity: 0; animation: fadeIn 3s forwards; }
-        @keyframes fadeIn { to { opacity: 1; } }
+        /* --- THE STILLNESS ENGINE (INTRO ANIMATION) --- */
+        #intro-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #000;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: unravel 6s forwards; /* 6 second experience */
+            pointer-events: none; /* Allows clicking through after it finishes */
+        }
 
-        /* SECTIONS */
+        #intro-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.5rem;
+            color: #444;
+            opacity: 0;
+            animation: breathe 4s ease-in-out;
+        }
+
+        @keyframes breathe {
+            0% { opacity: 0; }
+            40% { opacity: 1; } /* "Be still" appears */
+            60% { opacity: 1; }
+            100% { opacity: 0; } /* Fades out before the cosmos reveals */
+        }
+
+        @keyframes unravel {
+            0% { opacity: 1; }
+            80% { opacity: 1; } /* Stay black for 5 seconds */
+            100% { opacity: 0; } /* Fade away to show the site */
+        }
+
+        /* --- THE COSMOS (CONTENT) --- */
+        #content {
+            opacity: 0;
+            animation: cosmosReveal 3s forwards;
+            animation-delay: 5.5s; /* Wait for intro to finish */
+        }
+
+        @keyframes cosmosReveal {
+            to { opacity: 1; }
+        }
+
+        /* --- SECTIONS --- */
         section {
             min-height: 100vh;
             display: flex;
@@ -33,124 +75,142 @@
             justify-content: center;
             align-items: center;
             padding: 2rem;
-            border-bottom: 1px solid #111;
-        }
-
-        /* TYPOGRAPHY */
-        h1 { 
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 4rem; font-weight: 300;
-            letter-spacing: 0.8rem; text-transform: uppercase; 
-            margin-bottom: 0.5rem; color: #fff;
-        }
-        h2 { 
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem; letter-spacing: 0.2rem; 
-            color: #888; margin-bottom: 1.5rem; 
-        }
-        p { 
-            max-width: 600px; text-align: center; 
-            color: #888; margin-bottom: 2rem; font-size: 0.9rem;
-        }
-
-        /* LINKS & BUTTONS */
-        a, .toggle-btn { 
-            color: #fff; text-decoration: none; 
-            border-bottom: 1px dotted #555; transition: 0.3s; cursor: pointer;
-        }
-        a:hover, .toggle-btn:hover { color: #ccc; border-bottom: 1px solid #fff; }
-
-        .project-link {
-            background: transparent;
-            color: #fff;
-            border: 1px solid #333;
-            padding: 15px 30px;
-            margin-top: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.7rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .project-link:hover { background: #111; border-color: #666; }
-
-        /* HIDDEN GALLERY */
-        #schematics-gallery {
-            display: none; /* Hidden by default */
-            width: 100%;
-            max-width: 800px;
-            margin-top: 30px;
             text-align: center;
         }
-        .gallery-img {
-            width: 100%;
-            margin-bottom: 20px;
-            border: 1px solid #222;
-            filter: grayscale(100%);
-            transition: filter 0.5s;
-        }
-        .gallery-img:hover { filter: grayscale(0%); }
 
-        /* SCROLL INDICATOR */
-        .scroll-indicator {
-            position: absolute; bottom: 40px;
-            display: flex; flex-direction: column; align-items: center;
-            opacity: 0.6; animation: pulse 3s infinite;
+        /* --- THE QUIET ZAMOSHI --- */
+        /* No longer a giant header. Now a whisper. */
+        .quiet-signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.4rem;
+            color: #333;
+            margin-top: 40px;
+            text-transform: uppercase;
         }
-        @keyframes pulse {
-            0% { opacity: 0.3; transform: translateY(0); }
-            50% { opacity: 0.8; transform: translateY(5px); }
-            100% { opacity: 0.3; transform: translateY(0); }
+
+        /* --- THE SANCTUARY (HERO IMAGE) --- */
+        .sanctuary-hero {
+            max-width: 800px;
+            width: 100%;
+            height: auto;
+            border-radius: 2px;
+            box-shadow: 0 0 50px rgba(255, 160, 0, 0.05); /* Faint amber glow */
+            filter: brightness(0.8) contrast(1.1);
+            transition: filter 2s ease;
         }
+        .sanctuary-hero:hover { filter: brightness(1); }
+
+        /* --- TEXT STYLING --- */
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.2rem;
+            color: #666;
+            margin-top: 4rem;
+            font-weight: 300;
+        }
+
+        p {
+            max-width: 500px;
+            line-height: 1.8;
+            font-size: 0.85rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        /* --- BUTTONS & LINKS --- */
+        .ghost-button {
+            background: transparent;
+            color: #555;
+            border: 1px solid #222;
+            padding: 12px 25px;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.5s;
+        }
+        .ghost-button:hover {
+            border-color: #666;
+            color: #aaa;
+            box-shadow: 0 0 15px rgba(255,255,255,0.05);
+        }
+
+        /* --- HIDDEN GALLERY --- */
+        #schematics-gallery {
+            display: none;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 40px;
+        }
+        .gallery-row {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .gallery-img {
+            width: 48%; /* Two per row */
+            opacity: 0.7;
+            transition: opacity 0.5s;
+        }
+        .gallery-img:hover { opacity: 1; }
+
     </style>
 </head>
 <body>
 
-    <section class="fade-in">
-        <h1>ZAMOSHI</h1>
-        <p>Architect. Storyteller. Builder.</p>
-        <div class="scroll-indicator">
-            <span style="font-size: 0.6rem; letter-spacing: 3px; margin-bottom: 10px;">Explore</span>
-            <span style="font-size: 1.5rem;">↓</span>
-        </div>
-    </section>
+    <div id="intro-overlay">
+        <div id="intro-text">be still</div>
+    </div>
 
-    <section>
-        <h2>I. THE SANCTUARY</h2>
-        <p>
-            <strong>Sanctuary of the Silent Star</strong><br><br>
-            An architectural exploration for 2026. 
-            Constructing a space of silence.
-        </p>
+    <div id="content">
         
-        <button onclick="toggleGallery()" class="project-link">View Schematics</button>
+        <section>
+            <img src="schematic1.jpg" class="sanctuary-hero" alt="Sanctuary of the Silent Star">
+            
+            <div class="quiet-signature">zamoshi</div>
+        </section>
 
-        <div id="schematics-gallery">
-            <img src="schematic1.jpg" class="gallery-img">
-            <img src="schematic2.jpg" class="gallery-img">
-            <img src="schematic3.jpg" class="gallery-img">
-            <img src="schematic4.jpg" class="gallery-img">
-        </div>
-    </section>
+        <section>
+            <p>
+                In a world of noise, we build temples of silence.<br>
+                <strong>Sanctuary of the Silent Star</strong><br>
+                Playa 2026
+            </p>
 
-    <section>
-        <h2>II. THE FRINGE</h2>
-        <p>
-            <strong>Stories from the Edge</strong><br><br>
-            Jail. Homelessness. Psychosis. Adventure.<br>
-            "It is in the unknown that we find the story."
-        </p>
-        <a href="https://substack.com/@zamoshi" target="_blank" class="project-link">Read on Substack</a>
-    </section>
+            <button onclick="toggleGallery()" class="ghost-button">Unfold Schematics</button>
 
-    <section style="border-bottom: none;">
-        <h2>III. THE ENGINE</h2>
-        <p>
-            <strong>Cypher Energy Solutions</strong><br>
-            Enabling fleet electrification for a sustainable future.
-        </p>
-        <a href="https://cypheres.com" target="_blank" class="project-link">Visit CypherES.com</a>
-    </section>
+            <div id="schematics-gallery">
+                <div class="gallery-row">
+                    <img src="schematic1.jpg" class="gallery-img">
+                    <img src="schematic2.jpg" class="gallery-img">
+                    <img src="schematic3.jpg" class="gallery-img">
+                    <img src="schematic4.jpg" class="gallery-img">
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>THE FRINGE</h2>
+            <p>
+                The architecture of the mind is fragile.<br>
+                A collection of writings on psychosis, homelessness, and the return.
+            </p>
+            <a href="https://substack.com/@zamoshi" target="_blank" class="ghost-button">Enter the Archives</a>
+        </section>
+
+        <section style="border-bottom: none; min-height: 50vh;">
+            <h2>THE ENGINE</h2>
+            <p>
+                <strong>Cypher Energy Solutions</strong><br>
+                Aligning the grid.
+            </p>
+            <a href="https://cypheres.com" target="_blank" class="ghost-button">Power The Future</a>
+        </section>
+
+    </div>
 
     <script>
         function toggleGallery() {
@@ -159,10 +219,10 @@
             
             if (x.style.display === "block") {
                 x.style.display = "none";
-                btn.innerHTML = "VIEW SCHEMATICS";
+                btn.innerHTML = "UNFOLD SCHEMATICS";
             } else {
                 x.style.display = "block";
-                btn.innerHTML = "CLOSE SCHEMATICS";
+                btn.innerHTML = "FOLD SCHEMATICS";
             }
         }
     </script>
