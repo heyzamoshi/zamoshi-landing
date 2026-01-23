@@ -13,7 +13,7 @@
     <style>
         /* --- THE VOID (BASE) --- */
         body {
-            background-color: #030303; /* Darker than before */
+            background-color: #030303;
             color: #888;
             font-family: 'Montserrat', sans-serif;
             margin: 0; padding: 0;
@@ -21,7 +21,7 @@
             height: 100vh;
         }
 
-        /* --- THE STILLNESS ENGINE (INTRO ANIMATION) --- */
+        /* --- THE STILLNESS ENGINE (UPDATED: LOUDER & FASTER) --- */
         #intro-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -30,37 +30,38 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            animation: unravel 6s forwards; /* 6 second experience */
-            pointer-events: none; /* Allows clicking through after it finishes */
+            animation: unravel 3.5s forwards; /* Reduced from 6s */
+            pointer-events: none;
         }
 
         #intro-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            letter-spacing: 0.5rem;
-            color: #444;
+            font-size: 3rem; /* Much larger (was 1.2rem) */
+            letter-spacing: 0.8rem;
+            color: #fff; /* Pure white for maximum contrast */
+            text-transform: uppercase;
             opacity: 0;
-            animation: breathe 4s ease-in-out;
+            animation: breathe 2.5s ease-in-out; /* Faster punch */
         }
 
         @keyframes breathe {
-            0% { opacity: 0; }
-            40% { opacity: 1; } /* "Be still" appears */
-            60% { opacity: 1; }
-            100% { opacity: 0; } /* Fades out before the cosmos reveals */
+            0% { opacity: 0; transform: scale(0.9); }
+            20% { opacity: 1; transform: scale(1); } /* Text hits hard quickly */
+            80% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.05); } /* Fades out */
         }
 
         @keyframes unravel {
             0% { opacity: 1; }
-            80% { opacity: 1; } /* Stay black for 5 seconds */
-            100% { opacity: 0; } /* Fade away to show the site */
+            85% { opacity: 1; } 
+            100% { opacity: 0; } /* Rapid dissolve */
         }
 
         /* --- THE COSMOS (CONTENT) --- */
         #content {
             opacity: 0;
-            animation: cosmosReveal 3s forwards;
-            animation-delay: 5.5s; /* Wait for intro to finish */
+            animation: cosmosReveal 2s forwards;
+            animation-delay: 3s; /* Reveals sooner */
         }
 
         @keyframes cosmosReveal {
@@ -79,7 +80,6 @@
         }
 
         /* --- THE QUIET ZAMOSHI --- */
-        /* No longer a giant header. Now a whisper. */
         .quiet-signature {
             font-family: 'Cormorant Garamond', serif;
             font-size: 0.9rem;
@@ -95,7 +95,7 @@
             width: 100%;
             height: auto;
             border-radius: 2px;
-            box-shadow: 0 0 50px rgba(255, 160, 0, 0.05); /* Faint amber glow */
+            box-shadow: 0 0 50px rgba(255, 160, 0, 0.05);
             filter: brightness(0.8) contrast(1.1);
             transition: filter 2s ease;
         }
@@ -151,7 +151,7 @@
             flex-wrap: wrap;
         }
         .gallery-img {
-            width: 48%; /* Two per row */
+            width: 48%;
             opacity: 0.7;
             transition: opacity 0.5s;
         }
@@ -162,14 +162,13 @@
 <body>
 
     <div id="intro-overlay">
-        <div id="intro-text">be still</div>
+        <div id="intro-text">BE STILL</div>
     </div>
 
     <div id="content">
         
         <section>
             <img src="schematic1.jpg" class="sanctuary-hero" alt="Sanctuary of the Silent Star">
-            
             <div class="quiet-signature">zamoshi</div>
         </section>
 
