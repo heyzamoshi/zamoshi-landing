@@ -14,10 +14,20 @@
         /* --- BASE SETTINGS --- */
         body {
             background-color: #050505;
-            color: #e0e0e0; /* Much brighter text */
+            color: #e0e0e0; 
             font-family: 'Montserrat', sans-serif;
             margin: 0; padding: 0;
             overflow-x: hidden;
+        }
+
+        /* --- BACKGROUND VIBE --- */
+        #bg-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: -1; /* Keeps it behind everything */
+            pointer-events: none;
+            opacity: 0.3; /* Subtle so it doesn't overpower text */
         }
 
         /* --- THE CINEMATIC INTRO --- */
@@ -30,8 +40,8 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            animation: dissolveLayer 1s forwards; /* Fades out the black background */
-            animation-delay: 5s; /* Wait for text + lotus sequence */
+            animation: dissolveLayer 1s forwards;
+            animation-delay: 5s; 
             pointer-events: none;
         }
 
@@ -44,9 +54,8 @@
             opacity: 0;
         }
 
-        /* Animation Sequence for Text */
-        #msg-1 { animation: textFlash 2s ease-in-out; } /* "be still" */
-        #msg-2 { animation: textFlash 2s ease-in-out; animation-delay: 2s; } /* "one moment" */
+        #msg-1 { animation: textFlash 2s ease-in-out; } 
+        #msg-2 { animation: textFlash 2s ease-in-out; animation-delay: 2s; } 
 
         @keyframes textFlash {
             0% { opacity: 0; transform: translateY(10px); }
@@ -55,20 +64,19 @@
             100% { opacity: 0; transform: translateY(-10px); }
         }
 
-        /* The Lotus Bloom */
         #intro-lotus {
             width: 80px;
             opacity: 0;
             position: absolute;
-            filter: drop-shadow(0 0 10px rgba(255, 160, 0, 0.5)); /* Amber Glow */
+            filter: drop-shadow(0 0 10px rgba(255, 160, 0, 0.5)); 
             animation: bloomEffect 2s ease-out forwards;
-            animation-delay: 3.5s; /* Starts after text finishes */
+            animation-delay: 3.5s; 
         }
 
         @keyframes bloomEffect {
             0% { opacity: 0; transform: scale(0.5) rotate(-90deg); }
-            40% { opacity: 1; transform: scale(1) rotate(0deg); } /* Visible & Upright */
-            100% { opacity: 0; transform: scale(8); } /* Expands out of view */
+            40% { opacity: 1; transform: scale(1) rotate(0deg); } 
+            100% { opacity: 0; transform: scale(8); } 
         }
 
         @keyframes dissolveLayer {
@@ -79,7 +87,7 @@
         #content {
             opacity: 0;
             animation: contentFadeIn 2s forwards;
-            animation-delay: 4.5s; /* Syncs with lotus expansion */
+            animation-delay: 4.5s; 
         }
         @keyframes contentFadeIn { to { opacity: 1; } }
 
@@ -98,9 +106,9 @@
         /* --- TYPOGRAPHY UPDATES --- */
         h2 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem; /* Larger headers */
+            font-size: 2rem; 
             letter-spacing: 0.1rem;
-            color: #fff; /* Pure white */
+            color: #fff; 
             margin-bottom: 2rem;
             font-weight: 300;
         }
@@ -108,10 +116,22 @@
         p {
             max-width: 600px;
             line-height: 1.8;
-            font-size: 1rem; /* Larger body text */
-            color: #d0d0d0; /* High contrast grey */
+            font-size: 1rem; 
+            color: #d0d0d0; 
             margin-bottom: 2.5rem;
             font-weight: 300;
+        }
+
+        a.inline-link {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        a.inline-link:hover {
+            border-bottom: 1px solid #fff;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
         }
 
         /* --- THE QUIET HEADER --- */
@@ -121,7 +141,7 @@
             letter-spacing: 0.2rem;
             color: #666;
             margin-top: 30px;
-            text-transform: lowercase; /* Specifically lowercase */
+            text-transform: lowercase; 
             opacity: 0.7;
         }
 
@@ -132,7 +152,6 @@
             border-radius: 2px;
             box-shadow: 0 0 30px rgba(0,0,0,0.8);
             margin-bottom: 20px;
-            /* Subtly revealing */
         }
 
         /* --- SCROLL MOTION (THE PULL) --- */
@@ -148,7 +167,7 @@
         @keyframes dropLine {
             0% { height: 0; opacity: 0; top: 85%; }
             50% { height: 60px; opacity: 1; }
-            100% { height: 0; opacity: 0; top: 95%; } /* Moves down */
+            100% { height: 0; opacity: 0; top: 95%; } 
         }
 
         /* --- BUTTONS --- */
@@ -162,6 +181,8 @@
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.4s;
+            text-decoration: none;
+            display: inline-block;
         }
         .ghost-button:hover {
             border-color: #fff;
@@ -182,6 +203,8 @@
 </head>
 <body>
 
+    <canvas id="bg-canvas"></canvas>
+
     <div id="intro-layer">
         <div id="msg-1" class="intro-text">be still.</div>
         <div id="msg-2" class="intro-text">one moment.</div>
@@ -200,7 +223,7 @@
         <section>
             <p>
                 In a world of noise, we build temples of silence.<br>
-                <strong>Sanctuary of the Silent Star</strong><br>
+                <a href="https://silentstarspace.com" target="_blank" class="inline-link"><strong>Sanctuary of the Silent Star</strong></a><br>
                 Playa 2026
             </p>
 
@@ -219,8 +242,7 @@
         <section>
             <h2>the fringe</h2>
             <p>
-                The architecture of the mind is fragile.<br>
-                A collection of writings on psychosis, homelessness, and the return.
+                Writing about wandering thru concrete cities, cyberspace, and the great outdoors. Exploring an underbelly to the universe. These are some stories about where the world bends and my life off the beaten path.
             </p>
             <a href="https://substack.com/@zamoshi" target="_blank" class="ghost-button">Enter the Archives</a>
         </section>
@@ -237,6 +259,7 @@
     </div>
 
     <script>
+        // Gallery Toggle
         function toggleGallery() {
             var x = document.getElementById("schematics-gallery");
             var btn = document.querySelector("button[onclick='toggleGallery()']");
@@ -248,6 +271,67 @@
                 btn.innerHTML = "FOLD SCHEMATICS";
             }
         }
+
+        // Clean & Naive Background Script (Dots & Lines)
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, particles;
+
+        function initCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            particles = [];
+            // Number of dots based on screen size
+            const numParticles = Math.floor((width * height) / 15000); 
+            
+            for (let i = 0; i < numParticles; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.5, // Slow drift
+                    vy: (Math.random() - 0.5) * 0.5,
+                    radius: Math.random() * 1.5 + 0.5
+                });
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = '#ffffff';
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+            ctx.lineWidth = 0.5;
+
+            for (let i = 0; i < particles.length; i++) {
+                let p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+
+                // Bounce off edges smoothly
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Draw connecting lines if close enough
+                for (let j = i + 1; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 100) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        initCanvas();
+        draw();
     </script>
 </body>
 </html>
